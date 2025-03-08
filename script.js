@@ -2,7 +2,7 @@ let products = [
   {
     id: 1,
     title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-    price: 109.95,
+    price: 1009.95,
     description:
       'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
     category: "men's clothing",
@@ -291,28 +291,30 @@ for (let i = 0; i < products.length; i++) {
 
 // Exercitiul 3 - sa se afiseze in consola cel mai scump produs din categoria electronics
 
-let maxProductsElectronics = products[0];
+let maxProductsElectronics;
 
-for (let i = 1; i < products.length; i++) {
-  if (
-    maxProductsElectronics.price < products[i].price &&
-    products[i].category === 'electronics'
-  ) {
-    maxProductsElectronics = products[i];
+for (let i = 0; i < products.length; i++) {
+  if (products[i].category === 'electronics') {
+    if (
+      maxProductsElectronics === undefined ||
+      maxProductsElectronics.price < products[i].price
+    )
+      maxProductsElectronics = products[i];
   }
 }
 console.log(maxProductsElectronics.title);
 
 // Exercitiul 4 - sa se afiseze in consola cel mai ieftin produs din categoria women's clothing
 
-let cheapProductWomen = products[0];
+let cheapProductWomen;
 
-for (let i = 1; i < products.length; i++) {
-  if (
-    cheapProductWomen.price > products[i].price &&
-    products[i].category === "women's clothing"
-  ) {
-    cheapProductWomen = products[i];
+for (let i = 0; i < products.length; i++) {
+  if (products[i].category === "women's clothing") {
+    if (
+      cheapProductWomen === undefined ||
+      cheapProductWomen.price > products[i].price
+    )
+      cheapProductWomen = products[i];
   }
 }
 console.log(cheapProductWomen.title);
@@ -320,12 +322,13 @@ console.log(cheapProductWomen.title);
 // Exercitiul 5 - sa se afiseze in consola produsul cu
 // rating-ul cel mai mare din categoria "electronics"
 
-let maxRatingElectronics = products[0];
+let maxRatingElectronics;
 
 for (let i = 1; i < products.length; i++) {
   if (
-    maxRatingElectronics.rating.rate < products[i].rating.rate &&
-    products[i].category === 'electronics'
+    products[i].category === 'electronics' &&
+    (maxRatingElectronics === undefined ||
+      maxRatingElectronics.rating.rate < products[i].rating.rate)
   ) {
     maxRatingElectronics = products[i];
   }
